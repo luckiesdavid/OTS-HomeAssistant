@@ -120,7 +120,8 @@ Catalog point record keys:
                   point's own German labels where the shared map has none)
   enum_label_gaps {de: [tokens], en: [tokens]} tokens without a label
   sources       subset of [apk, reference, hc_template]
-  write_source  apk_settings for explicitly reviewed Smart app write bindings
+  write_source  apk_settings for explicitly reviewed Smart app write bindings,
+                user_reported for bindings reported by users but not APK-confirmed
   write_id, unit, options, value_map, min/max/bundle_min/bundle_max/step,
   on_value/off_value, enabled_default, diagnostic, hc_tag
 
@@ -158,17 +159,32 @@ APK_NUMBER_BINDINGS = {
     "ASPuhXXZAAE=": (40.0, 75.0),  # Boost
 }
 
+# SG Ready room setpoint increase ("Raumsollwert - Erhöhung Heizen") per
+# heating circuit. User-reported range from the Smart app; not yet confirmed
+# against the APK or a controller write. Evidence: docs/agent-notes/sg-ready.md.
+USER_REPORTED_NUMBER_BINDINGS = {
+    "ACONg458AAE=": (0.0, 5.0),  # Heating circuit 1
+    "ACONg+1MAAE=": (0.0, 5.0),  # Heating circuit 2
+    "ACONg8xcAAE=": (0.0, 5.0),  # Heating circuit 3
+    "ACONgyssAAE=": (0.0, 5.0),  # Heating circuit 4
+}
+
 
 def apply_apk_number_binding(rec: Dict[str, Any]) -> None:
-    """Supply reviewed APK write metadata; plant-specific metadata wins later."""
-    bounds = APK_NUMBER_BINDINGS.get(rec["id"])
-    if bounds is None:
+    """Supply reviewed write metadata; plant-specific metadata wins later."""
+    if rec["id"] in APK_NUMBER_BINDINGS:
+        bounds = APK_NUMBER_BINDINGS[rec["id"]]
+        unit, write_source = "°C", "apk_settings"
+    elif rec["id"] in USER_REPORTED_NUMBER_BINDINGS:
+        bounds = USER_REPORTED_NUMBER_BINDINGS[rec["id"]]
+        unit, write_source = "K", "user_reported"
+    else:
         return
     rec.update(
         platform="number",
         write_id=rec["id"],
-        write_source="apk_settings",
-        unit="°C",
+        write_source=write_source,
+        unit=unit,
         min=bounds[0],
         max=bounds[1],
         step=0.5,

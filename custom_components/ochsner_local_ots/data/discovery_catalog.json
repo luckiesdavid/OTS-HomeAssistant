@@ -1,6 +1,6 @@
 {
  "app_source": "com.ochsner.app v1.2.0/1785 + reference plant seed",
- "catalog_version": "2f170571ba272e41",
+ "catalog_version": "dd1c236ca04aa841",
  "enum_token_label_sources": {
   "de": {
    "acknowledge": "translated",
@@ -2036,58 +2036,82 @@
   {
    "hc_tag": 19693,
    "id": "ACONg+1MAAE=",
+   "max": 5.0,
+   "min": 0.0,
    "name": "Heating circuit 2 - Room target value - Increase heating",
    "name_de": "Heizkreis 2 - Raumsollwert - Erhöhung Heizen",
    "name_de_source": "translated",
    "name_en": "Heating circuit 2 - Room target value - Increase heating",
    "name_en_source": "apk_label",
    "name_source": "apk_label",
-   "platform": "sensor",
+   "platform": "number",
    "sources": [
     "apk"
-   ]
+   ],
+   "step": 0.5,
+   "unit": "K",
+   "write_id": "ACONg+1MAAE=",
+   "write_source": "user_reported"
   },
   {
    "hc_tag": 31886,
    "id": "ACONg458AAE=",
+   "max": 5.0,
+   "min": 0.0,
    "name": "Heating circuit 1 - Room target value - Increase heating",
    "name_de": "Heizkreis 1 - Raumsollwert - Erhöhung Heizen",
    "name_de_source": "translated",
    "name_en": "Heating circuit 1 - Room target value - Increase heating",
    "name_en_source": "apk_label",
    "name_source": "apk_label",
-   "platform": "sensor",
+   "platform": "number",
    "sources": [
     "apk"
-   ]
+   ],
+   "step": 0.5,
+   "unit": "K",
+   "write_id": "ACONg458AAE=",
+   "write_source": "user_reported"
   },
   {
    "hc_tag": 23756,
    "id": "ACONg8xcAAE=",
+   "max": 5.0,
+   "min": 0.0,
    "name": "Heating circuit 3 - Room target value - Increase heating",
    "name_de": "Heizkreis 3 - Raumsollwert - Erhöhung Heizen",
    "name_de_source": "translated",
    "name_en": "Heating circuit 3 - Room target value - Increase heating",
    "name_en_source": "apk_label",
    "name_source": "apk_label",
-   "platform": "sensor",
+   "platform": "number",
    "sources": [
     "apk"
-   ]
+   ],
+   "step": 0.5,
+   "unit": "K",
+   "write_id": "ACONg8xcAAE=",
+   "write_source": "user_reported"
   },
   {
    "hc_tag": 11307,
    "id": "ACONgyssAAE=",
+   "max": 5.0,
+   "min": 0.0,
    "name": "Heating circuit 4 - Room target value - Increase heating",
    "name_de": "Heizkreis 4 - Raumsollwert - Erhöhung Heizen",
    "name_de_source": "translated",
    "name_en": "Heating circuit 4 - Room target value - Increase heating",
    "name_en_source": "apk_label",
    "name_source": "apk_label",
-   "platform": "sensor",
+   "platform": "number",
    "sources": [
     "apk"
-   ]
+   ],
+   "step": 0.5,
+   "unit": "K",
+   "write_id": "ACONgyssAAE=",
+   "write_source": "user_reported"
   },
   {
    "hc_tag": 11307,
@@ -13577,7 +13601,7 @@
   "shared_token_labels_de": 136,
   "shared_token_labels_en": 136,
   "shared_tokens_untranslated_de": [],
-  "writable_points": 200
+  "writable_points": 204
  },
  "tags": [
   {
